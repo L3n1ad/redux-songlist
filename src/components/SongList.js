@@ -2,14 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { selectSong } from "../actions";
 
-const SongList = (props) => {
+const SongList = ({ songs, selectSong }) => {
   function renderList() {
-    return props.songs.map((song, index) => {
+    return songs.map((song, index) => {
       return (
         <div className="item" key={index}>
           <div className="right floated content">
             <button
-              onClick={() => props.selectSong(song)}
+              onClick={() => selectSong(song)}
               className="ui button primary"
             >
               Select
@@ -27,7 +27,6 @@ const SongList = (props) => {
 // it's the convention to call it this way
 // the function will get our redux states to turn it into props we can use in our component
 const mapStateToProps = (state) => {
-  console.log(state);
   return { songs: state.songs };
 };
 
